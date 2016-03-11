@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Memory</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="inserisci_numero_righe">Inserisci il numero di righe</string>
+
+    <integer name="images_number">6</integer>
+    <string-array name="immages_array">
+        <item>occhiali</item>
+        <item>jeans</item>
+        <item>world</item>
+        <item>lamp</item>
+        <item>cactus</item>
+        <item>usb</item>
+    </string-array>
+</resources>
