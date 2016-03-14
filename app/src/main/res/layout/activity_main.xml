@@ -9,7 +9,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="100">
+        android:weightSum="100"
+        android:background="#ffffff">
 
         <!--
         <ImageView
@@ -22,6 +23,30 @@
             />
         -->
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Punti"
+                android:id="@+id/textView4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="0"
+                android:id="@+id/textView5"
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/textView4"
+                android:layout_toEndOf="@+id/textView4" />
+
+        </RelativeLayout>
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
@@ -60,6 +85,8 @@
                     android:adjustViewBounds="true" />
             </TableRow>-->
         </TableLayout>
+
+
 
 
     </LinearLayout>

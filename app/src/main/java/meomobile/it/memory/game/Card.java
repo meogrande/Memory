@@ -1,4 +1,7 @@
-package meomobile.it.memory.data;
+package meomobile.it.memory.game;
+
+import android.view.View;
+import android.widget.ImageView;
 
 import meomobile.it.memory.R;
 
@@ -12,12 +15,14 @@ public class Card {
     private int hash;
     private boolean isVisible;
     private boolean isMatched;
+    private ImageView iv;
 
-    public Card(int hash, int image) {
+    public Card(ImageView iv, int image) {
         isVisible = false;
         isMatched = false;
         this.image = image;
-        this.hash = hash;
+        this.iv = iv;
+        this.hash = iv.hashCode();
     }
 
     public int getHash() {
@@ -55,8 +60,27 @@ public class Card {
 
     /**
      * Inverto lo stato della carta
+     * Solo il package richiamare il metodo
      */
-    public void turn() {
+    void flip() {
         isVisible = !isVisible;
+        iv.setImageResource(getImage());
+        System.out.println("Messa la carta " + hash + " a: " + isVisible());
+    }
+
+    /**
+     * Rimette una carta nascosta
+     */
+    void reset() {
+        isVisible = false;
+        iv.setImageResource(getImage());
+        iv.refreshDrawableState();
+    }
+
+    /**
+     * Nasconde la carta
+     */
+    void hide() {
+        iv.setVisibility(View.INVISIBLE);
     }
 }

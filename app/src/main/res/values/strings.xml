@@ -6,7 +6,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="inserisci_numero_righe">Inserisci il numero di righe</string>
 
-    <integer name="images_number">6</integer>
+    <integer name="images_number">8</integer>
     <string-array name="immages_array">
         <item>occhiali</item>
         <item>jeans</item>
@@ -15,5 +15,6 @@
         <item>cactus</item>
         <item>usb</item>
         <item>bag</item>
+        <item>note</item>
     </string-array>
 </resources>

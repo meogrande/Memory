@@ -18,11 +18,15 @@ public class IntroActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Creo un intento
                 Intent i = new Intent(v.getContext(), MainActivity.class);
+                // Recupero i riferimenti agli oggetti con i valori da passare
                 TextView righe = (TextView) findViewById(R.id.editText_righe);
                 TextView colonne = (TextView) findViewById(R.id.editText_colonne);
+                // Inserisco i valori nell'intento
                 i.putExtra("righe", righe.getText().toString().trim());
                 i.putExtra("colonne", colonne.getText().toString().trim());
+                // attivo la nuova Activity
                 startActivity(i);
             }
         });
