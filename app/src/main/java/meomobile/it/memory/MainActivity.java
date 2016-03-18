@@ -1,7 +1,10 @@
 package meomobile.it.memory;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +13,8 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
@@ -27,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private int columns;
     private static final ScheduledExecutorService worker =
             Executors.newSingleThreadScheduledExecutor();
-
+    private TextView textView_points;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,14 +40,16 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         super.onCreate(savedInstanceState);
-
-        Intent intent = getIntent();
-        System.out.println(intent.getStringExtra("righe"));
-
-        int rows = Integer.valueOf(intent.getStringExtra("righe"));
-        int columns = Integer.valueOf(intent.getStringExtra("colonne"));
-
         setContentView(R.layout.activity_main);
+
+        // Recupero il riferimento alla textView del punteggio
+        textView_points = (TextView) findViewById(R.id.textView_points);
+
+        // recupero i valori passati
+        Intent intent = getIntent();
+        int rows = intent.getIntExtra("righe", 2);
+        int columns = intent.getIntExtra("colonne",2);
+
 
         // carico i valori e creo un vettore di carte
         images_array = getResources().getStringArray(R.array.immages_array);
@@ -73,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 ImageView imageView = new ImageView(this);
                 imageView.setAdjustViewBounds(true);
                 imageView.setOnClickListener(il);
-                imageView.setPadding(1,1,1,1);
+                imageView.setPadding(2,2,2,2);
                 tableRow.addView(imageView, j);
 
                 // Creo una nuova carta prendendo un'immagine casuale
@@ -112,6 +119,31 @@ public class MainActivity extends AppCompatActivity {
                     public void run()
                     {
                         gameModel.endTurn();
+                        System.out.println(gameModel.getPoints());
+                        textView_points.setText(String.valueOf(gameModel.getPoints()));
+                        if (gameModel.isGameFinished()) {
+                            System.out.println("Congratulazioni! Il gioco è finito!");
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(textView_points.getContext());
+                            alertDialogBuilder.setMessage("Do you want to play again?");
+
+                            alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface arg0, int arg1) {
+                                    //Toast.makeText(MainActivity.this,"Not yet working",Toast.LENGTH_LONG).show();
+                                    recreate();
+                                }
+                            });
+
+                            alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    finish();
+                                }
+                            });
+
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            alertDialog.show();
+                        }
                     }
                 }, 1000);
 

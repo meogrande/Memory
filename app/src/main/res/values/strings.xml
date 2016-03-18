@@ -5,10 +5,11 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="inserisci_numero_righe">Inserisci il numero di righe</string>
+    <string name="welcome_message">Benvenuti a Memory</string>
 
-    <integer name="images_number">8</integer>
+    <integer name="images_number">12</integer>
     <string-array name="immages_array">
-        <item>occhiali</item>
+        <item>glasses</item>
         <item>jeans</item>
         <item>world</item>
         <item>lamp</item>
@@ -16,5 +17,9 @@
         <item>usb</item>
         <item>bag</item>
         <item>note</item>
+        <item>pc</item>
+        <item>tshirt</item>
+        <item>camera</item>
+        <item>key</item>
     </string-array>
 </resources>

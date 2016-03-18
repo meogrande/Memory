@@ -11,10 +11,13 @@ public class GameModel {
     // Memorizzo le carte girate
     Card first;
     Card second;
+    int points;
+    int guessedCards; // Il numero delle carte indovinate
 
     public GameModel() {
         card_list = new HashMap<Integer, Card>();
         flippedCards = 0;
+        points = 0;
     }
 
     public void put(Integer i, Card value) {
@@ -76,12 +79,16 @@ public class GameModel {
             if (hasMatch()) {
                 first.hide();
                 second.hide();
+                // Aumento il punteggio di 100 punti
+                points = points + 100;
+                // Aggiungo due alle carte indovinate
+                guessedCards += 2;
             } else {
-                System.out.println("Copro la prima immagine");
+                // Le ricopro e tolgo 30 punti
+                points -=30;
                 if (first != null) {
                     first.reset();
                 }
-                System.out.println("Copro la seconda immagine");
                 if (second != null) {
                     second.reset();
                 }
@@ -89,5 +96,23 @@ public class GameModel {
             // Rimetto il contatore a zero
             flippedCards = 0;
         }
+    }
+
+    /**
+     * Returns true if the game is finished
+     */
+    public boolean isGameFinished() {
+        if (guessedCards==card_list.size()) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Restituisce i punti
+     * @return
+     */
+    public int getPoints() {
+        return points;
     }
 }

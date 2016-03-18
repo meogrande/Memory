@@ -13,61 +13,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Benvenuti a Memory"
+        android:text="@string/welcome_message"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/editText_righe"
-        android:layout_alignEnd="@+id/editText_righe" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText_righe"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:text="3"
-        android:hint="@string/inserisci_numero_righe"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Righe"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Colonne"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/editText_righe"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText_colonne"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/editText_righe"
-        android:layout_alignStart="@+id/editText_righe"
-        android:textAlignment="center"
-        android:text="3" />
+        android:id="@+id/imageButton_easy"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:src="@drawable/button_easy" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gioca!"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/imageButton_medium"
+        android:src="@drawable/button_medium"
+        android:layout_below="@+id/imageButton_easy"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton_hard"
+        android:src="@drawable/button_hard"
+        android:layout_below="@+id/imageButton_medium"
+        android:layout_alignLeft="@+id/imageButton_easy"
+        android:layout_alignStart="@+id/imageButton_easy" />
 </RelativeLayout>
